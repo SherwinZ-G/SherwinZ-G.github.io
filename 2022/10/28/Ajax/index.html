@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="SherwinZ">
+
+
+
+
+
+<title>Ajax | Sherwin_Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Sherwin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Sherwin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Ajax</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">SherwinZ</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 28, 2022&nbsp;&nbsp;9:37:16</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Promise-async-and-Ajax"><a href="#Promise-async-and-Ajax" class="headerlink" title="Promise, async and Ajax"></a>Promise, async and Ajax</h1><h2 id="使用promise的API"><a href="#使用promise的API" class="headerlink" title="使用promise的API"></a>使用promise的API</h2><p>fetch（‘http:&#x2F;&#x2F;…’)</p>
+<p>使用async关键词将函数标记为异步函数 ⇒ 异步函数指返回值为promise对象的函数</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">const</span> response=<span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&quot;http://...&quot;</span>)</span><br><span class="line">  <span class="keyword">const</span> json=<span class="keyword">await</span> response.<span class="title function_">json</span>()</span><br><span class="line"><span class="comment">//此处response是服务器返回的响应数据</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>“async函数是使用<code>async</code>关键字声明的函数。 async函数是<code>[AsyncFunction](https://link.zhihu.com/?target=https%3A//developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/AsyncFunction)</code>构造函数的实例， 并且其中允许使用<code>await</code>关键字。<code>async</code>和<code>await</code>关键字让我们可以用一种更简洁的方式写出基于<code>[Promise](https://link.zhihu.com/?target=https%3A//developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)</code>的异步行为，而无需刻意地链式调用<code>promise</code>。”</strong></p>
+<h2 id="js异步"><a href="#js异步" class="headerlink" title="js异步"></a>js异步</h2><p>js是单线程，发送请求后只有等待上一个完了之后再来下一个，如何多线程同时干活呢？</p>
+<p><img src="/.%5Cimages%5CUntitled.png" alt="Untitled"></p>
+<p>js借助系统的其他线程，给系统派发任务，准备好任务队列，系统完成后交给任务队列，js不断地循环这个队列</p>
+<h2 id="什么是async-x2F-await？"><a href="#什么是async-x2F-await？" class="headerlink" title="什么是async&#x2F;await？"></a>什么是async&#x2F;await？</h2><p>前言<br>  js有很多异步处理的解决方案，哪个好那个坏谁也说不清，而 ES中所包含的async 函数，却是让人感到眼前一亮，找到了解决 JavaScript 对于异步操作的最好操作，完美的可通过 Async 和 Await 轻松的进行扁平化处理。</p>
+<h3 id="async-x2F-await是什么？"><a href="#async-x2F-await是什么？" class="headerlink" title="async&#x2F;await是什么？"></a>async&#x2F;await是什么？</h3><p>async&#x2F;await从字面意思上很好理解，async是异步的意思，await有等待的意思，而两者的用法上也是如此。async用于申明一个function是异步的，而await 用于等待一个异步方法执行完成。<br>也就是这样一个过程：</p>
+<p>async 表示这是一个 async 函数，而 await 只能在这个函数里面使用。<br>await 表示在这里等待 await 后面的操作执行完毕，再执行下一句代码。<br>await 后面紧跟着的最好是一个耗时的操作或者是一个异步操作（方法）。</p>
+<h3 id="深入async-x2F-await"><a href="#深入async-x2F-await" class="headerlink" title="深入async&#x2F;await"></a>深入async&#x2F;await</h3><ul>
+<li><p>async返回值</p>
+<p>  async用于定义一个异步函数，该函数返回一个Promise。</p>
+</li>
+</ul>
+<p>如果async函数返回的是一个同步的值，这个值将被包装成一个理解resolve的Promise，等同于return Promise.resolve(value) 。</p>
+<p>await用于一个异步操作之前，表示要“等待”这个异步操作的返回值。await也可以用于一个同步的值。</p>
+<p>  这里就会说明一个问题了，为什么await关键词只能在async函数中用？<br>await操作符等的是一个返回的结果，那么如果是同步的情况，那就直接返回了。</p>
+<p>这里就会说明一个问题了，为什么await关键词只能在async函数中用？</p>
+<ul>
+<li>await操作符等的是一个返回的结果，那么如果是同步的情况，那就直接返回了。那如果是异步的情况呢，异步的情况下，await会阻塞整一个流程，直到结果返回之后，才会继续下面的代码。阻塞代码那会很难受，所以await关键词就只能在async函数中使用了。</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回一个同步的值</span></span><br><span class="line"><span class="keyword">let</span> sayHi = <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">sayHi</span>(<span class="params"></span>)&#123;</span><br><span class="line"><span class="keyword">let</span> hi = <span class="keyword">await</span> <span class="string">&#x27;hello world&#x27;</span>;</span><br><span class="line"><span class="keyword">return</span> hi; <span class="comment">//等同于return Promise.resolve(hi);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">sayHi</span>().<span class="title function_">then</span>(<span class="function"><span class="params">result</span>=&gt;</span> &#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<p>  上面这个例子返回是一个同步的值，字符串’hello world’，sayHi()是一个async函数，返回值被包装成一个Promise，可以调用then()方法获取返回值。</p>
+<p>对于一个同步的值，可以使用await，也可以不使用await。效果效果是一样的。具体用不用，看情况。</p>
+<h2 id="Asynchronous-Javascript-XML"><a href="#Asynchronous-Javascript-XML" class="headerlink" title="Asynchronous Javascript+ XML"></a><strong>Asynchronous</strong> <em>J</em><strong>avascript</strong>+ <em>X</em>ML</h2><ul>
+<li>局部刷新——只要是JS调用异步通讯组件并使用格式化的数据来更新web页面上的内容或操作过程，那么我们用的方法就可算是AJAX</li>
+</ul>
+<h2 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a><strong>XMLHttpRequest</strong></h2><p>XMLHttpRequest（XHR）对象用于与服务器交互。通过 XMLHttpRequest 可以在不刷新页面的情况下请求特定 URL，获取数据。这允许网页在不影响用户操作的情况下，更新页面的局部内容。</p>
+<ul>
+<li><p>open方法：</p>
+<p>  初始化一个请求，从一个地址获取一个数据</p>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;./api/sample.txt&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>检查当前state</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>SherwinZ</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://sherwinz-g.github.io/2022/10/28/Ajax/">https://sherwinz-g.github.io/2022/10/28/Ajax/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2022 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>调制饮料，改变人生！</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/"># 前端学习</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2022/10/27/already_tommorow/">Already Tomorrow in HongKong</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© SherwinZ | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
