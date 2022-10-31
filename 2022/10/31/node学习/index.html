@@ -214,18 +214,18 @@
         </header>
 
         <div class="post-content">
-            <h1 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h1><h1 id="Node-js是一个使用google-v8引擎解析js代码的后端运行环境"><a href="#Node-js是一个使用google-v8引擎解析js代码的后端运行环境" class="headerlink" title="Node.js是一个使用google v8引擎解析js代码的后端运行环境"></a>Node.js是一个使用google v8引擎解析js代码的后端运行环境</h1><p>常用框架：</p>
+            <h1 id="Node-js是一个使用google-v8引擎解析js代码的后端运行环境"><a href="#Node-js是一个使用google-v8引擎解析js代码的后端运行环境" class="headerlink" title="Node.js是一个使用google v8引擎解析js代码的后端运行环境"></a>Node.js是一个使用google v8引擎解析js代码的后端运行环境</h1><p>常用框架：</p>
 <p>express →快速构建web应用</p>
 <p>electron →快速构建桌面应用</p>
 <p>为什么JS可以操作DOM和BOM?</p>
-<p><img src="/./images/Untitled2.png" alt="Untitled2"></p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/971588d1-e79f-4a0d-9a9c-b550770b8a31/Untitled.png" alt="Untitled"></p>
 <p><strong>内置API</strong>: DOM BOM CANVAS xmlHttpRequest等，浏览器提供的特殊接口</p>
 <p>API只有在运行环境中（浏览器）可以生效，脱离了浏览器就不可以用js</p>
 <p>js⇒调用API</p>
 <p>解析引擎⇒解析js</p>
 <h2 id="什么是Node-js"><a href="#什么是Node-js" class="headerlink" title="什么是Node.js"></a>什么是Node.js</h2><p>Node.js是javascript后端运行环境，使用node就可以用js来写后端</p>
 <p>⇒ Node.js是基于chrome V8 引擎的 javascript后端运行环境</p>
-<h2 id="学习路径"><a href="#学习路径" class="headerlink" title="学习路径"></a>学习路径</h2><p>Node.js 内置API模块（fs，path，http）+ 第三方API （express，mysql）</p>
+<h2 id="学习路径"><a href="#学习路径" class="headerlink" title="学习路径"></a>学习路径</h2><p>Node.js 内置API模块（fs，path，http）+第三方API （express，mysql）</p>
 <h3 id="一些终端命令"><a href="#一些终端命令" class="headerlink" title="一些终端命令"></a>一些终端命令</h3><ul>
 <li>在文件夹里右键打开powershell</li>
 <li>↑箭头重复上一次命令</li>
@@ -273,14 +273,14 @@
 <h2 id="2-5-综合案例"><a href="#2-5-综合案例" class="headerlink" title="2.5 综合案例"></a>2.5 综合案例</h2><p>将一个文件拆分成html，css，js三个文件</p>
 <p>案例实现步骤：</p>
 <ol>
-<li>两个正则表达式来匹配<style> and <script></li>
+<li>两个正则表达式来匹配 style 和 script标签</li>
 <li>使用fs模块 读物需要被处理的html css js文件</li>
-<li>自定义resolve css/js/html方法，来写入index.css index.js</li>
+<li>自定义resolve css&#x2F;js&#x2F;html方法，来写入index.css index.js</li>
 </ol>
 <h1 id="3-http模块"><a href="#3-http模块" class="headerlink" title="3 http模块"></a>3 http模块</h1><p><strong>⇒ 作用</strong>：node.js官方提供的，<strong>用来创建web服务器</strong>的模块。通过http.createserver()方法可以将一台普通的电脑变成web服务器，从而对外提供web资源</p>
 <ol>
 <li>ip地址就是互联网上每一台计算机的唯一地址</li>
-<li>域名和域名服务器（domain） =》好记 的名字</li>
+<li>域名和域名服务器（domain） &#x3D;》好记 的名字</li>
 <li>端口：标识作用</li>
 </ol>
 <h2 id="3-1-1-创建最基本web服务器"><a href="#3-1-1-创建最基本web服务器" class="headerlink" title="3.1.1 创建最基本web服务器"></a>3.1.1 创建最基本web服务器</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 请求http</span></span><br><span class="line"><span class="keyword">const</span> http=<span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//2. 创建web服务器实例</span></span><br><span class="line"><span class="keyword">const</span> server=http.<span class="title function_">createServer</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//3. on方法绑定request</span></span><br><span class="line">server.<span class="title function_">on</span>(<span class="string">&#x27;request&#x27;</span>,<span class="keyword">function</span>(<span class="params">req,res</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Someone visit our web server&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//4. 启动服务器</span></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">443</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;server is running on 443&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -292,6 +292,7 @@
 </li>
 <li><p>res响应对象</p>
 <p>  res.end()</p>
+<p>  <img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/614a14c7-72f6-42e2-a41a-75ffc852b214/Untitled.png" alt="Untitled"></p>
 </li>
 </ul>
 <p>解决中文响应乱码的问题</p>
@@ -300,7 +301,7 @@
 <p>3.1.3 根据不同的url响应不同的html内容</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> http=<span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> path=<span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> server=http.<span class="title function_">createServer</span>();</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">on</span>(<span class="string">&#x27;request&#x27;</span>,<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//获取浏览器中的url</span></span><br><span class="line">    <span class="keyword">let</span> url=req.<span class="property">url</span>;</span><br><span class="line">    <span class="comment">//根据不同的url响应不同内容</span></span><br><span class="line">    <span class="keyword">if</span>(url==<span class="string">&#x27;/&#x27;</span>||<span class="string">&#x27;/index.html&#x27;</span>)&#123;</span><br><span class="line">        <span class="comment">//根据url读取相应地址的文件</span></span><br><span class="line">        fs.<span class="title function_">readFile</span>(path.<span class="title function_">join</span>(__dirname,<span class="string">&#x27;/clock&#x27;</span>,url),<span class="string">&#x27;utf-8&#x27;</span>,<span class="function">(<span class="params">err,dataStr</span>)=&gt;</span>&#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(err)&#123;</span><br><span class="line">                res.<span class="title function_">end</span>(err.<span class="property">message</span>);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;there is an error&#x27;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">               <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;successfully read&#x27;</span>);     </span><br><span class="line">               <span class="comment">//res.setHeader(&#x27;Content-Type&#x27;,&#x27;text/html; charset=utf-8&#x27;);</span></span><br><span class="line">                res.<span class="title function_">end</span>(dataStr);</span><br><span class="line">            &#125;                   </span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">8080</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;server is running on 127.0.0.1:8080&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h1 id="4-模块化-module"><a href="#4-模块化-module" class="headerlink" title="4 模块化 module"></a>4 模块化 module</h1><p>好处：按需加载/复用性高</p>
+<h1 id="4-模块化-module"><a href="#4-模块化-module" class="headerlink" title="4 模块化 module"></a>4 模块化 module</h1><p>好处：按需加载&#x2F;复用性高</p>
 <p>加载用户自定义模块需要require路径</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mokuai=<span class="built_in">require</span>(<span class="string">&#x27;./m1.js&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(mokuai)</span><br></pre></td></tr></table></figure>
 
@@ -309,6 +310,7 @@
 <h2 id="module对象"><a href="#module对象" class="headerlink" title="module对象"></a>module对象</h2><p>每个自定义对象中都有一个module对象</p>
 <p>module.exports()</p>
 <p>在一个自定义模块中，默认module.exports()导入一个<strong>空对象</strong></p>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/52ded031-c793-46af-9e94-9cb4fa008e65/Untitled.png" alt="Untitled"></p>
 <p>4.1 exports对象</p>
 <p>require获取的永远是module.exports指向的对象</p>
 <p>4.1.2 node.js中的模块规范化</p>
@@ -324,7 +326,7 @@
 <p>→ 哪里下载包？ <a target="_blank" rel="noopener" href="http://npmjs.com/">npmjs.com</a> </p>
 <p><a target="_blank" rel="noopener" href="http://registry.npmjs.com/">registry.npmjs.com</a> 服务器</p>
 <p>导入包实现格式化时间的需求</p>
-<p>→ 固定命令： 在项目中安装指定名称的包：> <strong>npm install 包的完整名称</strong></p>
+<p>→ 固定命令： 在项目中安装指定名称的包：&gt; <strong>npm install 包的完整名称</strong></p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在项目目录下安装</span></span><br><span class="line">-npm i moment</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> moment=<span class="built_in">require</span>(<span class="string">&#x27;moment&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> newD = <span class="title function_">moment</span>().<span class="title function_">format</span>(<span class="string">&#x27;MMM-Do-YYYY, h:mm:ss A&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newD);</span><br></pre></td></tr></table></figure>
@@ -334,13 +336,13 @@
 <p>记得把node——modules文件夹放到.gitignore忽略文件中</p>
 <h3 id="4-5-2-快速创建package-json"><a href="#4-5-2-快速创建package-json" class="headerlink" title="4.5.2 快速创建package.json"></a>4.5.2 快速创建package.json</h3><p>⇒  命令：<strong>npm init -y</strong></p>
 <h3 id="4-5-3-dependency-节点记录装了哪些包"><a href="#4-5-3-dependency-节点记录装了哪些包" class="headerlink" title="4.5.3 dependency 节点记录装了哪些包"></a>4.5.3 dependency 节点记录装了哪些包</h3><ul>
-<li><p>将所有的包下载到项目中 → 执行 ><strong>npm install</strong> 命令下载所有的包</p>
-<p>  卸载包 <strong>>npm uninstall 包名字</strong></p>
+<li><p>将所有的包下载到项目中 → 执行 &gt;<strong>npm install</strong> 命令下载所有的包</p>
+<p>  卸载包 <strong>&gt;npm uninstall 包名字</strong></p>
 </li>
 <li><p>devDependency节点：</p>
 </li>
 </ul>
-<p>只在开发阶段用到，上线后用不到  <strong>>npm install -D  名字</strong></p>
+<p>只在开发阶段用到，上线后用不到  <strong>&gt;npm install -D  名字</strong></p>
 <h3 id="4-5-4-切换成淘宝镜像服务器下载npm包"><a href="#4-5-4-切换成淘宝镜像服务器下载npm包" class="headerlink" title="4.5.4 切换成淘宝镜像服务器下载npm包"></a>4.5.4 切换成淘宝镜像服务器下载npm包</h3><p>包的分类</p>
 <ul>
 <li>项目包- 开发依赖包、核心依赖包</li>
@@ -352,11 +354,11 @@
 </ul>
 <hr>
 <h1 id="5-模块加载机制"><a href="#5-模块加载机制" class="headerlink" title="5 模块加载机制"></a>5 模块加载机制</h1><p>内置模块加载优先级最高</p>
-<p>如果是自定义模块的话require（’./自定义’）要有路径标识</p>
+<p>如果是自定义模块的话require（’.&#x2F;自定义’）要有路径标识</p>
 <hr>
 <h1 id="6-使用express"><a href="#6-使用express" class="headerlink" title="6 使用express"></a>6 使用express</h1><p>express的作用和node.js内置的http模块比较类似，用来搭建一个简单的服务器</p>
 <p>本质是一个第三方模块，是基于http某模块封装出来的</p>
-<p>安装 >npm i express</p>
+<p>安装 &gt;npm i express</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导入模块</span></span><br><span class="line"><span class="keyword">const</span> express=<span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="comment">//创建服务器</span></span><br><span class="line"><span class="keyword">const</span> app=<span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">8080</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;server is runnig on 8080&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>动态参数</p>
